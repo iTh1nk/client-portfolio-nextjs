@@ -1,20 +1,24 @@
 {
-  "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
+  "name": "with-tailwindcss",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "9.5.3",
-    "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "next": "latest",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@types/node": "^14.11.2",
     "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^1.8.10",
     "typescript": "^4.0.3"
-  }
+  },
+  "license": "MIT"
 }
