@@ -59,7 +59,7 @@ const Left: React.FunctionComponent<Props> = ({ expand, cb }) => {
       {/* Information Under Profile Picture */}
       <div
         className={
-          (expand ? " opacity-100 duration-500 " : " duration-300 opacity-0 ") +
+          (expand ? " opacity-100 duration-700 " : " duration-75 opacity-0 h-0 ") +
           "mt-3 md:visible md:opacity-100 md:duration-75"
         }
       >
