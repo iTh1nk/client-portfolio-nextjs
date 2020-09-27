@@ -7,7 +7,7 @@ export default function IndexPage() {
   const [expand, setExpand] = useState<boolean>(false);
 
   return (
-    <Container>
+    <div className="py-10 px-6 md:px-24">
       <div className="flex flex-col md:flex-row md:justify-center md:max-w-4xl md:m-auto">
         <div className="md:w-1/2">
           <Left expand={expand} cb={() => setExpand(!expand)} />
@@ -22,6 +22,6 @@ export default function IndexPage() {
           <Right />
         </div>
       </div>
-    </Container>
+    </div>
   );
 }
