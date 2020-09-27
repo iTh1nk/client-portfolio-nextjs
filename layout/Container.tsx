@@ -13,7 +13,7 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
   title,
 }) => {
   return (
-    <div className="py-10 px-6 md:px-24">
+    <div className=" py-10 px-6 md:px-24">
       <Head>
         <title>{title || "Ciao"}</title>
         <meta charSet="utf-8" />
