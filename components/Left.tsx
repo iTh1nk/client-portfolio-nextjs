@@ -19,8 +19,8 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
-const Category = styled.div(() => [tw`mt-3`]);
-const SubCategory = styled.div(() => [tw`ml-3`]);
+const Category = styled.div(() => [tw`mt-3 text-center md:text-left`]);
+const SubCategory = styled.div(() => [tw`md:ml-3 m-auto`]);
 const Title = styled.div(() => [tw`py-2 font-semibold text-lg`]);
 const SubTitle = styled.span(() => [tw`text-gray-600 ml-3 text-sm`]);
 const SubDiv = styled.div(() => [tw`mb-1`]);
