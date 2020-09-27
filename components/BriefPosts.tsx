@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 interface Props {}
 
-const RightPosts: React.FunctionComponent<Props> = ({}) => {
+const BriefPosts: React.FunctionComponent<Props> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
@@ -27,4 +27,4 @@ const RightPosts: React.FunctionComponent<Props> = ({}) => {
   );
 };
 
-export default RightPosts;
+export default BriefPosts;

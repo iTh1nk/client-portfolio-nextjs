@@ -25,13 +25,11 @@ const Title = styled.div(() => [tw`py-2 font-semibold text-lg`]);
 const SubTitle = styled.span(() => [tw`text-gray-600 ml-3 text-sm`]);
 const SubDiv = styled.div(() => [tw`mb-1`]);
 
-interface Props {
-  expand: boolean;
-  cb: () => void;
-}
+interface Props {}
 
-const Left: React.FunctionComponent<Props> = ({ expand, cb }) => {
+const Profile: React.FunctionComponent<Props> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [expand, setExpand] = useState<boolean>(false);
 
   return (
     <>
@@ -45,7 +43,7 @@ const Left: React.FunctionComponent<Props> = ({ expand, cb }) => {
         <div className="mt-2 font-semibold text-2xl">Chao Feng</div>
         <div className="text-gray-600 italic text-sm">Full Stack Developer</div>
         <div
-          onClick={() => cb()}
+          onClick={() => setExpand(!expand)}
           className="mt-3 cursor-pointer inline-block md:hidden"
         >
           Expand{" "}
@@ -59,7 +57,9 @@ const Left: React.FunctionComponent<Props> = ({ expand, cb }) => {
       {/* Information Under Profile Picture */}
       <div
         className={
-          (expand ? " opacity-100 duration-700 " : " duration-75 opacity-0 h-0 ") +
+          (expand
+            ? " opacity-100 duration-700 "
+            : " duration-75 opacity-0 h-0 ") +
           "mt-3 md:visible md:opacity-100 md:duration-75"
         }
       >
@@ -140,4 +140,4 @@ const Left: React.FunctionComponent<Props> = ({ expand, cb }) => {
   );
 };
 
-export default Left;
+export default Profile;

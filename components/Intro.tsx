@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 interface Props {}
 
-const RightIntro: React.FunctionComponent<Props> = ({}) => {
+const Intro: React.FunctionComponent<Props> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
@@ -29,4 +29,4 @@ const RightIntro: React.FunctionComponent<Props> = ({}) => {
   );
 };
 
-export default RightIntro;
+export default Intro;

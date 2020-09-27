@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 interface ContainerProps {
   title?: string;
@@ -20,7 +18,7 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {/* Web Body */}
-      {children}
+      <div className="py-8 px-6 md:px-24">{children}</div>
       {/* Web Body */}
     </div>
   );
