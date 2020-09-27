@@ -2,20 +2,6 @@
 
 /* Write your own custom base styles here */
 
-@media (prefers-color-scheme: light) {
-  body {
-    background-color: white;
-    color: black;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: black;
-    color: white;
-  }
-}
-
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */
@@ -27,3 +13,18 @@
 /* Stop purging. */
 
 /* Your own custom utilities */
+
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: white;
+    color: #2a4365;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+    color: white;
+  }
+}
