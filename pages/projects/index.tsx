@@ -19,33 +19,37 @@ const Projects: React.FunctionComponent<Props> = ({}) => {
 
   return (
     <Container title="Projects">
-      <div>
-        <Profile />
-      </div>
-      <hr className="mt-3 mb-6" />
-      <div className="flex flex-col justify-between">
-        <div className="mb-6">
-          <div className="font-semibold text-2xl mb-3">
-            Project 1: Bill Book
-          </div>
-          <div className="font-mono">
-            Brief introduction of projects. Welcome to my new home! It is built
-            with Next.js as frontend and Rust Actix handles backend.
-          </div>
+      <div className="md:flex md:flex-row md:justify-center md:max-w-4xl md:m-auto">
+        <div className="md:w-1/2">
+          <Profile />
         </div>
-        <ReactPaginate
-          previousLabel={<FontAwesomeIcon icon={faAngleDoubleLeft} />}
-          nextLabel={<FontAwesomeIcon icon={faAngleDoubleRight} />}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
-          pageCount={5}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={2}
-          // onPageChange={handlePageClick}
-          containerClassName={"pagination"}
-          subContainerClassName={"pages pagination"}
-          activeClassName={"active"}
-        />
+        <div className="inline md:hidden">
+          <hr className="mt-3 mb-6" />
+        </div>
+        <div className="flex flex-col justify-between md:w-full md:mt-0">
+          <div className="mb-6">
+            <div className="font-semibold text-2xl mb-3">
+              Projects
+            </div>
+            <div className="font-mono">
+              Brief introduction of projects. Welcome to my new home! It is
+              built with Next.js as frontend and Rust Actix handles backend.
+            </div>
+          </div>
+          <ReactPaginate
+            previousLabel={<FontAwesomeIcon icon={faAngleDoubleLeft} />}
+            nextLabel={<FontAwesomeIcon icon={faAngleDoubleRight} />}
+            breakLabel={"..."}
+            pageCount={5}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={2}
+            // onPageChange={handlePageClick}
+            breakClassName={"break-me"}
+            containerClassName={"pagination"}
+            subContainerClassName={"pages pagination"}
+            activeClassName={"active"}
+          />
+        </div>
       </div>
     </Container>
   );

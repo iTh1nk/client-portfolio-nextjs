@@ -40,8 +40,8 @@
 
 .pagination>.active>a {
   background-color: white;
-  border-color:#2a4365;
-  color:#2a4365;
+  border-color:black;
+  color:black;
 }
 
 .pagination>li>a {
@@ -52,20 +52,20 @@
 }
 
 .pagination>li>a:hover {
-  color:#2a4365;
+  color:black;
   background-color: white;
-  border-color:#2a4365;
+  border-color:black;
 }
 
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>a:focus, .pagination>.active>span:hover, .pagination>.active>span:focus {
   background-color: white;
-  border-color:#2a4365;
+  border-color:black;
   outline: none;
 }
 
 .pagination>li>a, .pagination>li>span {
   color: white;
-  background-color: #2a4365;
+  background-color: black;
 }
 
 .pagination>li:first-child>a, .pagination>li:first-child>span, .pagination>li:last-child>a, .pagination>li:last-child>span {

@@ -43,7 +43,9 @@ const Profile: React.FunctionComponent<Props> = ({}) => {
             alt="Profile Image"
           />
         </Link>
-        <div className="mt-2 font-semibold text-2xl">Chao Feng</div>
+        <div className="mt-2 font-semibold text-2xl">
+          <Link href="/posts">Chao Feng</Link>
+        </div>
         <div className="text-gray-600 italic text-sm">Full Stack Developer</div>
         <div
           onClick={() => setExpand(!expand)}
@@ -61,9 +63,13 @@ const Profile: React.FunctionComponent<Props> = ({}) => {
         </div>
       </div>
       {/* Information Under Profile Picture */}
-      <div className={(expand ? " inline " : " hidden ") + "mt-3"}>
+      <div className={(expand ? " inline " : " hidden ") + "mt-3 md:inline"}>
         <Category>
-          <Title>Projects</Title>
+          <Link href="/projects">
+            <Title>
+              <span className="cursor-pointer">Projects</span>
+            </Title>
+          </Link>
           <SubCategory>
             <SubDiv>
               <FontAwesomeIcon icon={faFolder} />

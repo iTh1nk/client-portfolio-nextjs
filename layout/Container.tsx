@@ -4,11 +4,13 @@ import Head from "next/head";
 
 interface ContainerProps {
   title?: string;
+  content?: string;
 }
 
 export const Container: React.FunctionComponent<ContainerProps> = ({
   children,
   title,
+  content,
 }) => {
   return (
     <div>
@@ -16,6 +18,10 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
         <title>{title || "Ciao"}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content={content || "Welcome to my personal website!"}
+        />
       </Head>
       {/* Web Body */}
       <div className="py-8 px-6 md:px-24">{children}</div>
