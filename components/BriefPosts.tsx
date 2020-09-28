@@ -1,3 +1,6 @@
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import React, { useState } from "react";
 
 interface Props {}
@@ -22,6 +25,14 @@ const BriefPosts: React.FunctionComponent<Props> = ({}) => {
           Welcome to my new home! It is built with Next.js as frontend and Rust
           Actix handles backend.
         </div>
+      </div>
+      <div className="mr-5 flex justify-end">
+        <Link href="/posts">
+          <div className="duration-500 transform hover:translate-x-1 cursor-pointer">
+            <span className="font-semibold">More </span>
+            <FontAwesomeIcon className="" icon={faAngleDoubleRight} />
+          </div>
+        </Link>
       </div>
     </div>
   );

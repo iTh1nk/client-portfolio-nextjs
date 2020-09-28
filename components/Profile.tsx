@@ -18,6 +18,7 @@ import {
   faLinkedin,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 
 const Category = styled.div(() => [tw`mt-3 text-center md:text-left`]);
 const SubCategory = styled.div(() => [tw`md:ml-3 m-auto`]);
@@ -35,34 +36,32 @@ const Profile: React.FunctionComponent<Props> = ({}) => {
     <>
       {/* Profile Picture and Title */}
       <div className="text-center md:text-left">
-        <img
-          className="w-24 h-24 md:w-40 md:h-40 rounded-we shadow-we m-auto md:m-0"
-          src="profile.png"
-          alt="Profile Image"
-        />
+        <Link href="/">
+          <img
+            className="w-24 h-24 md:w-40 md:h-40 rounded-we shadow-we m-auto md:m-0 cursor-pointer"
+            src="profile.png"
+            alt="Profile Image"
+          />
+        </Link>
         <div className="mt-2 font-semibold text-2xl">Chao Feng</div>
         <div className="text-gray-600 italic text-sm">Full Stack Developer</div>
         <div
           onClick={() => setExpand(!expand)}
           className="mt-3 cursor-pointer inline-block md:hidden"
         >
-          Expand{" "}
           {expand ? (
-            <FontAwesomeIcon icon={faAngleDoubleUp} />
+            <span>
+              Collapse <FontAwesomeIcon icon={faAngleDoubleUp} />
+            </span>
           ) : (
-            <FontAwesomeIcon icon={faAngleDoubleDown} />
+            <span>
+              Expand <FontAwesomeIcon icon={faAngleDoubleDown} />
+            </span>
           )}
         </div>
       </div>
       {/* Information Under Profile Picture */}
-      <div
-        className={
-          (expand
-            ? " opacity-100 duration-700 "
-            : " duration-75 opacity-0 h-0 ") +
-          "mt-3 md:visible md:opacity-100 md:duration-75"
-        }
-      >
+      <div className={(expand ? " inline " : " hidden ") + "mt-3"}>
         <Category>
           <Title>Projects</Title>
           <SubCategory>
