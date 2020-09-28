@@ -13,6 +13,10 @@ interface Props {}
 const Projects: React.FunctionComponent<Props> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  // const handlePageClick = (e) => {
+  //   dispatch({ type: "pageChange", page: e.selected });
+  // };
+
   return (
     <Container title="Projects">
       <div>
@@ -21,11 +25,12 @@ const Projects: React.FunctionComponent<Props> = ({}) => {
       <hr className="mt-3 mb-6" />
       <div className="flex flex-col justify-between">
         <div className="mb-6">
-          <div className="font-semibold text-2xl">Welcome Home</div>
-          <div className="py-2 text-gray-500 text-sm">September 2020 20:20</div>
+          <div className="font-semibold text-2xl mb-3">
+            Project 1: Bill Book
+          </div>
           <div className="font-mono">
-            Welcome to my new home! It is built with Next.js as frontend and
-            Rust Actix handles backend.
+            Brief introduction of projects. Welcome to my new home! It is built
+            with Next.js as frontend and Rust Actix handles backend.
           </div>
         </div>
         <ReactPaginate

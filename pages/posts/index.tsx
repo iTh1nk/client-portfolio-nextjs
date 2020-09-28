@@ -10,6 +10,10 @@ interface Props {}
 const Posts: React.FunctionComponent<Props> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  // const handlePageClick = (e) => {
+  //   dispatch({ type: "pageChange", page: e.selected });
+  // };
+
   return (
     <Container title="Posts">
       <div>
