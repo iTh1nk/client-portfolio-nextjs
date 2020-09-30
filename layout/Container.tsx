@@ -24,7 +24,7 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
         />
       </Head>
 
-      <div className=" py-8 px-6 md:px-12">{children}</div>
+      <div className="">{children}</div>
     </div>
   );
 };
