@@ -23,9 +23,8 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
           content={content || "Welcome to my personal website!"}
         />
       </Head>
-      {/* Web Body */}
-      <div className="">{children}</div>
-      {/* Web Body */}
+
+      <div className=" py-8 px-6 md:px-12">{children}</div>
     </div>
   );
 };

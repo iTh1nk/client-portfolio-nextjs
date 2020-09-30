@@ -6,7 +6,7 @@ import { Container } from "../layout/Container";
 export default function IndexPage({ dataProps }) {
   return (
     <Container>
-      <div className="flex flex-col md:flex-row md:justify-center md:max-w-4xl md:m-auto py-8 px-6 md:px-12">
+      <div className="flex flex-col md:flex-row md:justify-center md:max-w-4xl md:m-auto">
         <div className="md:w-1/2">
           <Profile />
         </div>
