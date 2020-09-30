@@ -23,7 +23,7 @@ import Link from "next/link";
 const Category = styled.div(() => [tw`mt-3 text-center md:text-left`]);
 const SubCategory = styled.div(() => [tw`md:ml-3 m-auto`]);
 const Title = styled.div(() => [tw`py-2 font-semibold text-lg`]);
-const SubTitle = styled.span(() => [tw`text-gray-600 ml-3 text-sm`]);
+const SubTitle = styled.span(() => [tw`text-gray-600 ml-3 text-sm dark:text-gray-400`]);
 const SubDiv = styled.div(() => [tw`mb-1`]);
 
 interface Props {}
@@ -46,7 +46,7 @@ const Profile: React.FunctionComponent<Props> = ({}) => {
         <div className="mt-2 font-semibold text-2xl">
           <Link href="/posts">Chao Feng</Link>
         </div>
-        <div className="text-gray-600 italic text-sm">Full Stack Developer</div>
+        <div className="text-gray-400 italic text-sm">Full Stack Developer</div>
         <div
           onClick={() => setExpand(!expand)}
           className="mt-3 cursor-pointer inline-block md:hidden"

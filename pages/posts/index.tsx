@@ -7,10 +7,24 @@ import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
+import { format } from "date-fns";
+import Link from "next/link";
 
-interface Props {}
+interface Props {
+  dataProps: Array<Post>;
+}
 
-const Posts: React.FunctionComponent<Props> = ({}) => {
+type Post = {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  created_on: Date;
+};
+
+const CONTENT_LENGTH = 200;
+
+const Posts: React.FunctionComponent<Props> = ({ dataProps }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // const handlePageClick = (e) => {
@@ -27,16 +41,32 @@ const Posts: React.FunctionComponent<Props> = ({}) => {
           <hr className="mt-3 mb-6" />
         </div>
         <div className="flex flex-col justify-between md:w-full md:mt-0">
-          <div className="mb-6">
-            <div className="font-semibold text-2xl">Posts</div>
-            <div className="py-2 text-gray-500 text-sm">
-              September 2020 20:20
+          {dataProps?.map((item, idx) => (
+            <div className="mb-6" key={item.id}>
+              <Link href="/posts">
+                <a className="font-semibold text-2xl">{item.title}</a>
+              </Link>
+              <div className="py-2 text-gray-500 text-xs">
+                {format(new Date(item.created_on), "MM-dd-yyyy HH:mm")}
+              </div>
+              <div className="font-mono text-sm dark:text-gray-400">
+                <div
+                  className="ck-content inline-block h-24 overflow-hidden"
+                  dangerouslySetInnerHTML={{
+                    __html: item.content,
+                  }}
+                />
+              </div>
+              <div className="mt-3 font-serif text-gray-500">
+                {item.content.length < CONTENT_LENGTH ? null : (
+                  <Link href="/posts">
+                    <a>Read More...</a>
+                  </Link>
+                )}
+              </div>
             </div>
-            <div className="font-mono">
-              Welcome to my new home! It is built with Next.js as frontend and
-              Rust Actix handles backend.
-            </div>
-          </div>
+          ))}
+
           <ReactPaginate
             previousLabel={<FontAwesomeIcon icon={faAngleDoubleLeft} />}
             nextLabel={<FontAwesomeIcon icon={faAngleDoubleRight} />}
@@ -55,5 +85,25 @@ const Posts: React.FunctionComponent<Props> = ({}) => {
     </Container>
   );
 };
+
+export async function getStaticProps() {
+  try {
+    const res = await fetch(process.env.NEXT_PUBLIC_API + "/posts");
+    const dataProps = await res.json();
+    return {
+      props: {
+        dataProps,
+      },
+      revalidate: 1,
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      props: {
+        data: null,
+      },
+    };
+  }
+}
 
 export default Posts;

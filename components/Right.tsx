@@ -2,9 +2,19 @@ import React, { useState } from "react";
 import BriefPosts from "./BriefPosts";
 import Intro from "./Intro";
 
-interface Props {}
+interface Props {
+  dataProps: Array<Post>;
+}
 
-const Right: React.FunctionComponent<Props> = ({}) => {
+type Post = {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  created_on: Date;
+};
+
+const Right: React.FunctionComponent<Props> = ({ dataProps }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
@@ -14,7 +24,7 @@ const Right: React.FunctionComponent<Props> = ({}) => {
           <Intro />
         </div>
         <div className="py-10 md:py-8">
-          <BriefPosts />
+          <BriefPosts dataProps={dataProps} />
         </div>
       </div>
     </div>
