@@ -40,7 +40,7 @@ const Project: React.FunctionComponent<Props> = ({
           <hr className="mt-3 mb-6" />
         </div>
         <div className="flex flex-col justify-start md:w-full md:mt-0">
-          <div className="font-semibold text-2xl">{dataProps.title}</div>
+          <div className="font-semibold text-2xl">{dataProps?.title}</div>
           <div className="mt-6 font-mono text-sm dark:text-gray-400">
             <div
               className="ck-content inline-block"
