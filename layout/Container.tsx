@@ -32,8 +32,8 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
           content={content || "Welcome to my personal website!"}
         />
       </Head>
-
-      <div className="">
+      <div className=" text-6xl font-bold">hello</div>
+      <div className="flex flex-col md:flex-row md:justify-center md:max-w-6xl md:m-auto py-8 px-6 md:px-20">
         <div className="md:w-2/5">
           <Profile dataProps={dataProps} />
         </div>
