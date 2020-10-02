@@ -1,4 +1,7 @@
-import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleDoubleRight,
+  faFontAwesomeLogoFull,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -16,8 +19,6 @@ type Post = {
   created_at: Date;
 };
 
-const CONTENT_LENGTH = 200;
-
 const BriefPosts: React.FunctionComponent<Props> = ({ dataProps }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -25,7 +26,7 @@ const BriefPosts: React.FunctionComponent<Props> = ({ dataProps }) => {
     <div className="flex flex-col md:h-full justify-between">
       {dataProps?.map((item, idx) => (
         <div className="mb-6" key={item.id}>
-          <Link href="/posts">
+          <Link href={`/posts/[postId]`} as={`/posts/${item.id}`}>
             <a className="font-semibold text-2xl">{item.title}</a>
           </Link>
           <div className="py-2 text-gray-500 text-xs">
@@ -42,13 +43,19 @@ const BriefPosts: React.FunctionComponent<Props> = ({ dataProps }) => {
           <div className="mt-3 font-serif text-gray-500">
             {item.content.length <
             parseInt(process.env.NEXT_PUBLIC_CONTENT_LENGTH) ? null : (
-              <Link href="/posts">
+              <Link href={`/posts/[postId]`} as={`/posts/${item.id}`}>
                 <a>Read More...</a>
               </Link>
             )}
           </div>
         </div>
       ))}
+      <Link href="/posts">
+        <a className="transform hover:translate-x-1 duration-500">
+          <FontAwesomeIcon icon={faAngleDoubleRight} />
+          <span className="ml-2">All Posts</span>
+        </a>
+      </Link>
     </div>
   );
 };

@@ -23,12 +23,23 @@ import Link from "next/link";
 const Category = styled.div(() => [tw`mt-3 text-center md:text-left`]);
 const SubCategory = styled.div(() => [tw`md:ml-3 m-auto`]);
 const Title = styled.div(() => [tw`py-2 font-semibold text-lg`]);
-const SubTitle = styled.span(() => [tw`text-gray-600 ml-3 text-sm dark:text-gray-400`]);
+const SubTitle = styled.span(() => [
+  tw`text-gray-600 ml-3 text-sm dark:text-gray-400`,
+]);
 const SubDiv = styled.div(() => [tw`mb-1`]);
 
-interface Props {}
+interface Props {
+  dataProps?: Array<Project>;
+}
 
-const Profile: React.FunctionComponent<Props> = ({}) => {
+type Project = {
+  id: string;
+  title: string;
+  content: string;
+  created_at: Date;
+};
+
+const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [expand, setExpand] = useState<boolean>(false);
 
@@ -71,20 +82,19 @@ const Profile: React.FunctionComponent<Props> = ({}) => {
             </Title>
           </Link>
           <SubCategory>
-            <SubDiv>
-              <FontAwesomeIcon icon={faFolder} />
-              <SubTitle>
-                <a href="https://vzw.we0mmm.site/">Bill Book</a>
-              </SubTitle>
-            </SubDiv>
-            <SubDiv>
-              <FontAwesomeIcon icon={faFolder} />
-              <SubTitle>Bill Book</SubTitle>
-            </SubDiv>
-            <SubDiv>
-              <FontAwesomeIcon icon={faFolder} />
-              <SubTitle>Bill Book</SubTitle>
-            </SubDiv>
+            {dataProps?.map((item) => (
+              <SubDiv key={item.id}>
+                <FontAwesomeIcon icon={faFolder} />
+                <SubTitle>
+                  <Link
+                    href={`/projects/[projectId]`}
+                    as={`/projects/${item.id}`}
+                  >
+                    <a>{item.title}</a>
+                  </Link>
+                </SubTitle>
+              </SubDiv>
+            ))}
           </SubCategory>
         </Category>
         <Category>

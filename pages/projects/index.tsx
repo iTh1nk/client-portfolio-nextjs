@@ -10,17 +10,21 @@ import {
 import Link from "next/link";
 
 interface Props {
-  dataProps: { results: Array<Post>; total: number };
+  dataProps: { results: Array<Project>; total: number };
+  dataProject: Array<Project>;
 }
 
-type Post = {
+type Project = {
   id: string;
   title: string;
   content: string;
   created_at: Date;
 };
 
-const Projects: React.FunctionComponent<Props> = ({ dataProps }) => {
+const Projects: React.FunctionComponent<Props> = ({
+  dataProps,
+  dataProject,
+}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // const handlePageClick = (e) => {
@@ -28,11 +32,11 @@ const Projects: React.FunctionComponent<Props> = ({ dataProps }) => {
   // };
 
   return (
-    <Container title="Projects">
-      <div className="md:flex md:flex-row md:justify-center md:max-w-6xl md:m-auto py-8 px-6 md:px-20">
-        <div className="md:w-1/2">
+    <Container title="Projects" content={"All Projects"} dataProps={dataProject?.slice(0, 3)}>
+      <div className="">
+        {/* <div className="md:w-1/2">
           <Profile />
-        </div>
+        </div> */}
         <div className="inline md:hidden">
           <hr className="mt-3 mb-6" />
         </div>
@@ -89,9 +93,14 @@ export async function getStaticProps() {
         process.env.NEXT_PUBLIC_PAGE
     );
     const dataProps = await res.json();
+    const resProject = await fetch(
+      process.env.NEXT_PUBLIC_API + "/projects/get"
+    );
+    const dataProject = await resProject.json();
     return {
       props: {
         dataProps,
+        dataProject,
       },
       revalidate: 1,
     };

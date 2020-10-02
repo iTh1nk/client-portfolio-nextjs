@@ -3,15 +3,15 @@ import Profile from "../components/Profile";
 import Right from "../components/Right";
 import { Container } from "../layout/Container";
 
-export default function IndexPage({ dataProps }) {
+export default function IndexPage({ dataPost, dataProject }) {
   return (
-    <Container>
-      <div className="flex flex-col md:flex-row md:justify-center md:max-w-6xl md:m-auto py-8 px-6 md:px-20">
-        <div className="md:w-1/2">
-          <Profile />
-        </div>
-        <div className="md:w-full md:mt-0 ">
-          <Right dataProps={dataProps?.slice(0, 5)} />
+    <Container dataProps={dataProject?.slice(0, 3)}>
+      <div className="">
+        {/* <div className="md:w-1/2">
+          <Profile dataProps={dataProject} />
+        </div> */}
+        <div className="">
+          <Right dataProps={dataPost?.slice(0, 5)} />
         </div>
       </div>
     </Container>
@@ -20,11 +20,16 @@ export default function IndexPage({ dataProps }) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(process.env.NEXT_PUBLIC_API + "/posts/get");
-    const dataProps = await res.json();
+    const resPost = await fetch(process.env.NEXT_PUBLIC_API + "/posts/get");
+    const dataPost = await resPost.json();
+    const resProject = await fetch(
+      process.env.NEXT_PUBLIC_API + "/projects/get"
+    );
+    const dataProject = await resProject.json();
     return {
       props: {
-        dataProps,
+        dataPost,
+        dataProject,
       },
       revalidate: 1,
     };
