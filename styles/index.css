@@ -35,12 +35,12 @@
   display: flex;
 }
 
-.flex-col {
+.we-flex-col-row {
   flex-direction: column;
 }
 
 @media (min-width: 768px) {
-  .md\:flex-row {
+  .we-flex-col-row {
     flex-direction: row;
   }
 }
