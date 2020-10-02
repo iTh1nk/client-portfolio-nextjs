@@ -29,6 +29,57 @@
   }
 }
 
+/* Custom Container Layout */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .md\:flex-row {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:justify-center {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:max-w-6xl {
+    max-width: 72rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:m-auto {
+    margin: auto;
+  }
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
 .pagination {
   margin: 15px auto;
   display: flex;
