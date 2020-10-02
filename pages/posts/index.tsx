@@ -11,15 +11,15 @@ import { format } from "date-fns";
 import Link from "next/link";
 
 interface Props {
-  dataProps: Array<Post>;
+  dataProps: { results: Array<Post>; total: number };
 }
 
 type Post = {
-  id: number;
+  id: string;
   title: string;
   content: string;
   author: string;
-  created_on: Date;
+  created_at: Date;
 };
 
 const CONTENT_LENGTH = 200;
@@ -33,7 +33,7 @@ const Posts: React.FunctionComponent<Props> = ({ dataProps }) => {
 
   return (
     <Container title="Posts">
-      <div className="md:flex md:flex-row md:justify-center md:max-w-4xl md:m-auto">
+      <div className="md:flex md:flex-row md:justify-center md:max-w-6xl md:m-auto py-8 px-6 md:px-20">
         <div className="md:w-1/2">
           <Profile />
         </div>
@@ -41,13 +41,13 @@ const Posts: React.FunctionComponent<Props> = ({ dataProps }) => {
           <hr className="mt-3 mb-6" />
         </div>
         <div className="flex flex-col justify-between md:w-full md:mt-0">
-          {dataProps?.map((item, idx) => (
+          {dataProps?.results?.map((item, idx) => (
             <div className="mb-6" key={item.id}>
-              <Link href="/posts">
+              <Link href={`/posts/[postId]`} as={`/posts/${item.id}`}>
                 <a className="font-semibold text-2xl">{item.title}</a>
               </Link>
               <div className="py-2 text-gray-500 text-xs">
-                {format(new Date(item.created_on), "MM-dd-yyyy HH:mm")}
+                {format(new Date(item.created_at), "MM-dd-yyyy HH:mm")}
               </div>
               <div className="font-mono text-sm dark:text-gray-400">
                 <div
@@ -58,8 +58,9 @@ const Posts: React.FunctionComponent<Props> = ({ dataProps }) => {
                 />
               </div>
               <div className="mt-3 font-serif text-gray-500">
-                {item.content.length < CONTENT_LENGTH ? null : (
-                  <Link href="/posts">
+                {item.content.length <
+                parseInt(process.env.CONTENT_LENGTH) ? null : (
+                  <Link href={`/posts/[postId]`} as={`/posts/${item.id}`}>
                     <a>Read More...</a>
                   </Link>
                 )}
@@ -72,7 +73,9 @@ const Posts: React.FunctionComponent<Props> = ({ dataProps }) => {
             nextLabel={<FontAwesomeIcon icon={faAngleDoubleRight} />}
             breakLabel={"..."}
             breakClassName={"break-me"}
-            pageCount={5}
+            pageCount={Math.ceil(
+              dataProps?.total / parseInt(process.env.NEXT_PUBLIC_PAGE)
+            )}
             marginPagesDisplayed={2}
             pageRangeDisplayed={2}
             // onPageChange={handlePageClick}
@@ -88,7 +91,11 @@ const Posts: React.FunctionComponent<Props> = ({ dataProps }) => {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(process.env.NEXT_PUBLIC_API + "/posts");
+    const res = await fetch(
+      process.env.NEXT_PUBLIC_API +
+        "/posts/get/page?page_size=" +
+        process.env.NEXT_PUBLIC_PAGE
+    );
     const dataProps = await res.json();
     return {
       props: {

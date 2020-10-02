@@ -11,7 +11,7 @@ type Post = {
   title: string;
   content: string;
   author: string;
-  created_on: Date;
+  created_at: Date;
 };
 
 const Right: React.FunctionComponent<Props> = ({ dataProps }) => {

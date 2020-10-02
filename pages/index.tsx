@@ -11,7 +11,7 @@ export default function IndexPage({ dataProps }) {
           <Profile />
         </div>
         <div className="md:w-full md:mt-0 ">
-          <Right dataProps={dataProps.slice(0, 5)} />
+          <Right dataProps={dataProps?.slice(0, 5)} />
         </div>
       </div>
     </Container>
@@ -20,7 +20,7 @@ export default function IndexPage({ dataProps }) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(process.env.NEXT_PUBLIC_API + "/posts");
+    const res = await fetch(process.env.NEXT_PUBLIC_API + "/posts/get");
     const dataProps = await res.json();
     return {
       props: {

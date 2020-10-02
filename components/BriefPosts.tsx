@@ -13,7 +13,7 @@ type Post = {
   title: string;
   content: string;
   author: string;
-  created_on: Date;
+  created_at: Date;
 };
 
 const CONTENT_LENGTH = 200;
@@ -29,7 +29,7 @@ const BriefPosts: React.FunctionComponent<Props> = ({ dataProps }) => {
             <a className="font-semibold text-2xl">{item.title}</a>
           </Link>
           <div className="py-2 text-gray-500 text-xs">
-            {format(new Date(item.created_on), "MM-dd-yyyy HH:mm")}
+            {format(new Date(item.created_at), "MM-dd-yyyy HH:mm")}
           </div>
           <div className="font-mono text-sm dark:text-gray-400">
             <div

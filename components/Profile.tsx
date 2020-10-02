@@ -39,14 +39,14 @@ const Profile: React.FunctionComponent<Props> = ({}) => {
         <Link href="/">
           <img
             className="w-24 h-24 md:w-40 md:h-40 rounded-we shadow-we m-auto md:m-0 cursor-pointer"
-            src="profile.png"
+            src="/profile.png"
             alt="Profile Image"
           />
         </Link>
         <div className="mt-2 font-semibold text-2xl">
           <Link href="/posts">Chao Feng</Link>
         </div>
-        <div className="text-gray-400 italic text-sm">Full Stack Developer</div>
+        <div className="text-gray-600 italic text-sm">Full Stack Developer</div>
         <div
           onClick={() => setExpand(!expand)}
           className="mt-3 cursor-pointer inline-block md:hidden"

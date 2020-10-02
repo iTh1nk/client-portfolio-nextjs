@@ -15,7 +15,7 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
   return (
     <div>
       <Head>
-        <title>{title || "Ciao"}</title>
+        <title>{title || "Chao Feng"}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
