@@ -45,7 +45,7 @@ const Project: React.FunctionComponent<Props> = ({
             <div
               className="ck-content inline-block"
               dangerouslySetInnerHTML={{
-                __html: dataProps.content,
+                __html: dataProps?.content,
               }}
             />
           </div>
