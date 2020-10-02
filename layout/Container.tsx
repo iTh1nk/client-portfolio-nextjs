@@ -32,11 +32,11 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
           content={content || "Welcome to my personal website!"}
         />
       </Head>
-      <div className="flex flex-col md:flex-row md:justify-center md:max-w-6xl md:m-auto py-8 px-6 md:px-20">
+      <div className="flex md:flex-row md:justify-center md:max-w-6xl md:m-auto py-8 px-6 md:px-20">
         <div className="md:w-2/5">
           <Profile dataProps={dataProps} />
         </div>
-        <div className="md:w-full md:mt-0 ">{children}</div>
+        <div className="md:w-full md:mt-0">{children}</div>
       </div>
     </div>
   );
