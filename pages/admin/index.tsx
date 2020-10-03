@@ -8,7 +8,7 @@ const Admin: React.FunctionComponent<Props> = ({}) => {
 
   return (
     <AdminContainer>
-      <h1>We0m Custom Admin</h1>
+      <div>We0m Custom Admin We0m Custom Admin We0m Custom Admin</div>
     </AdminContainer>
   );
 };
