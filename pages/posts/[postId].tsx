@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Profile from "../../componentss/Profile";
-import { Container } from "../../componentss/Container";
+import Profile from "../../components/Profile";
+import { Container } from "../../components/Container";
 
 interface Props {
   dataProps: Post;
