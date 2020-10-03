@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import AdminContainer from "../../../components/AdminContainer";
 
-interface Props {
-
-}
+interface Props {}
 
 const AdminProjectHome: React.FunctionComponent<Props> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
-    <div>
+    <AdminContainer>
       <h1>We0m Custom AdminProjectHome</h1>
-    </div>
-  )
-}
+    </AdminContainer>
+  );
+};
 
-export default AdminProjectHome
+export default AdminProjectHome;

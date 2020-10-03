@@ -6,6 +6,7 @@ import {
   faCopyright,
   faGem,
   faHeart,
+  faHome,
   faMinus,
   faPlus,
   faRss,
@@ -13,6 +14,7 @@ import {
   faUserCog,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import {
   ProSidebar,
@@ -58,13 +60,35 @@ const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
             </MenuItem>
             <SubMenu title="Post" icon={<FontAwesomeIcon icon={faRss} />}>
               <MenuItem>
-                <FontAwesomeIcon icon={faPlus} />
+                <Link href="/admin/post">
+                  <a>
+                    <FontAwesomeIcon icon={faHome} />
+                  </a>
+                </Link>
               </MenuItem>
               <MenuItem>
-                <FontAwesomeIcon icon={faMinus} />
+                <Link href="/admin/post/add">
+                  <a>
+                    <FontAwesomeIcon icon={faPlus} />
+                  </a>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link href="/admin/post/delete">
+                  <a>
+                    <FontAwesomeIcon icon={faMinus} />
+                  </a>
+                </Link>
               </MenuItem>
             </SubMenu>
             <SubMenu title="Project" icon={<FontAwesomeIcon icon={faTasks} />}>
+              <MenuItem>
+                <Link href="/admin/project">
+                  <a>
+                    <FontAwesomeIcon icon={faHome} />
+                  </a>
+                </Link>
+              </MenuItem>
               <MenuItem>
                 <FontAwesomeIcon icon={faPlus} />
               </MenuItem>
@@ -76,6 +100,13 @@ const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
               title="Message"
               icon={<FontAwesomeIcon icon={faComment} />}
             >
+              <MenuItem>
+                <Link href="/admin/message">
+                  <a>
+                    <FontAwesomeIcon icon={faHome} />
+                  </a>
+                </Link>
+              </MenuItem>
               <MenuItem>
                 <FontAwesomeIcon icon={faPlus} />
               </MenuItem>

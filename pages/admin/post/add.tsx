@@ -3,14 +3,14 @@ import AdminContainer from "../../../components/AdminContainer";
 
 interface Props {}
 
-const AdminPostHome: React.FunctionComponent<Props> = ({}) => {
+const AdminPostAdd: React.FunctionComponent<Props> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   return (
     <AdminContainer>
-      <h1>We0m Custom AdminPostHome</h1>
+      <h1>We0m Custom AdminPostAdd</h1>
     </AdminContainer>
   );
 };
 
-export default AdminPostHome;
+export default AdminPostAdd;
