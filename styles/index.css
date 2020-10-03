@@ -31,7 +31,7 @@
 
 /* Custom Container Layout */
 
-.flex {
+/* .flex {
   display: flex;
 }
 
@@ -96,7 +96,7 @@
   .md\:mt-0 {
     margin-top: 0;
   }
-}
+} */
 
 .pagination {
   margin: 15px auto;

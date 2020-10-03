@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import Profile from "../components/Profile";
+import Profile from "./Profile";
 
 interface ContainerProps {
   title?: string;

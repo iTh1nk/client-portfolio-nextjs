@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Profile from "../components/Profile";
 import Right from "../components/Right";
-import { Container } from "../layout/Container";
+import { Container } from "../components/Container";
 
 export default function IndexPage({ dataPost, dataProject }) {
   return (
