@@ -58,7 +58,7 @@ const LoginModal: React.FunctionComponent<Props> = ({}) => {
   return (
     <div className="absolute z-50 top-0 w-full py-16 px-5 bg-blue-700 dark:bg-black h-full">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col dark:bg-gray-800 rounded-lg">
+        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col dark:bg-gray-900 rounded-lg">
           <div className="mb-4">
             <label
               className="block text-grey-darker text-sm font-bold mb-2"

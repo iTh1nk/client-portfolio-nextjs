@@ -21,7 +21,7 @@ module.exports = {
       md: "0.375rem",
       lg: "0.5rem",
       full: "9999px",
-      we: "2rem",
+      we: "1.5rem",
     },
     boxShadow: {
       xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",

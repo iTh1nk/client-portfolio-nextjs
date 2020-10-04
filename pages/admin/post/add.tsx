@@ -3,66 +3,101 @@ import AdminContainer from "../../../components/AdminContainer";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers";
 import * as yup from "yup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faPaperPlane,
+  faSpinner,
+  faUndo,
+} from "@fortawesome/free-solid-svg-icons";
+import AdminCKEditor from "../../../components/AdminCKEditor";
+import Axios from "axios";
 
 const schema = yup.object().shape({
-  username: yup.string().required(),
-  password: yup.string().required(),
+  title: yup.string().required("Title is required"),
+  author: yup.string().required("Author is required"),
 });
 
 interface Props {}
 
 const AdminPostAdd: React.FunctionComponent<Props> = ({}) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [ckContent, setCkContent] = useState("");
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    setSubmitting(true);
+    let dataSubmit = {
+      title: data.title,
+      author: data.author,
+      content: ckContent,
+    };
+    Axios.post(process.env.NEXT_PUBLIC_API + "/posts/post/", dataSubmit, {
+      headers: { authorization: localStorage.getItem("auth") },
+    })
+      .then((resp) => {
+        setSubmitting(false);
+      })
+      .catch((err) => {
+        console.log(err, err.response);
+        setSubmitting(false);
+      });
+  };
 
   return (
     <AdminContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+        <div className="bg-white shadow-md rounded px-3 pt-6 pb-8 mb-4 flex flex-col dark:bg-gray-900">
           <div className="mb-4">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="username"
-            >
-              Username
+            <label className="block text-sm font-bold mb-2" htmlFor="title">
+              Title
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-1"
-              id="username"
+              className="shadow appearance-none border rounded w-full py-2 px-3 mb-1 dark:text-black"
+              id="title"
               type="text"
-              placeholder="Username"
-              name="username"
+              placeholder="Title"
+              name="title"
               ref={register}
             />
-            <p className="we-form-error">{errors.firstName?.message}</p>
+            <p className="we-form-error">{errors.title?.message}</p>
           </div>
-          <div className="mb-6">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
+          <div className="mb-4">
+            <label className="block text-sm font-bold mb-2" htmlFor="author">
+              Author
             </label>
             <input
-              className="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-1"
-              id="password"
-              type="password"
-              placeholder="**********"
-              name="password"
+              className="shadow appearance-none border border-red rounded w-full py-2 px-3 mb-1 dark:text-black"
+              id="author"
+              type="author"
+              placeholder="Author"
+              name="author"
               ref={register}
             />
-            <p className="we-form-error">{errors.age?.message}</p>
+            <p className="we-form-error">{errors.author?.message}</p>
           </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-blue-600 hover:bg-blue-dark text-white font-bold py-1 px-2 rounded-md"
-              type="submit"
-            >
-              Sign In
+          <div className="mb-8">
+            <label className="block text-sm font-bold mb-2" htmlFor="content">
+              Content
+            </label>
+            <AdminCKEditor
+              data={ckContent}
+              cb={(cbContent) => setCkContent(cbContent)}
+            />
+          </div>
+          <div className="flex items-center justify-start">
+            <button className="we-btn-blue" type="submit">
+              Submit{" "}
+              {submitting ? (
+                <FontAwesomeIcon className="animate-spin" icon={faSpinner} />
+              ) : (
+                <FontAwesomeIcon icon={faPaperPlane} />
+              )}
+            </button>
+            <button className="we-btn-gray ml-3" type="submit">
+              Reset <FontAwesomeIcon icon={faUndo} />
             </button>
           </div>
         </div>

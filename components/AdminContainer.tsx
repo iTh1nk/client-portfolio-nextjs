@@ -138,8 +138,14 @@ const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
               </Menu>
             </SidebarContent>
             <div
+              onClick={() => router.push("/")}
+              className="text-center m-2 text-xl cursor-pointer"
+            >
+              <FontAwesomeIcon icon={faHome} />
+            </div>
+            <div
               onClick={() => handleLogout()}
-              className="text-center m-2 text-red-500 text-xl"
+              className="text-center m-2 text-red-500 text-xl cursor-pointer"
             >
               <FontAwesomeIcon icon={faSignOutAlt} />
             </div>
@@ -158,7 +164,7 @@ const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
           className={
             (collapse
               ? "duration-700 opacity-100 "
-              : " duration-75 opacity-0 ") + "p-3 md:p-6"
+              : " duration-75 opacity-0 ") + "p-3 md:p-6 w-full"
           }
         >
           {children}
