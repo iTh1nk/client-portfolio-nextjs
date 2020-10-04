@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Link from "next/link";
 import Head from "next/head";
-import Profile from "./Profile";
+import Profile from "../components/Profile";
 
 interface ContainerProps {
   title?: string;
@@ -32,7 +32,7 @@ export const Container: React.FunctionComponent<ContainerProps> = ({
           content={content || "Welcome to my personal website!"}
         />
       </Head>
-      <div className="flex we-flex-col-row md:justify-center md:max-w-6xl md:m-auto py-8 px-6 md:px-20">
+      <div className="flex md:flex-row flex-col md:justify-center md:max-w-6xl md:m-auto py-8 px-6 md:px-20">
         <div className="md:w-2/5">
           <Profile dataProps={dataProps} />
         </div>

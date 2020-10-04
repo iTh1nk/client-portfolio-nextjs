@@ -1,13 +1,21 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 interface Props {}
 
 const Intro: React.FunctionComponent<Props> = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [m0Counter, setM0Counter] = useState<number>(0);
+  const router = useRouter();
+
+  if (m0Counter === 6) router.push("/admin");
 
   return (
     <div>
-      <div className="font-mono mb-3 font-bold text-3xl text-blue-500">
+      <div
+        onClick={() => setM0Counter(m0Counter + 1)}
+        className="font-mono mb-3 font-bold text-3xl text-blue-500"
+      >
         Ciao 👋
       </div>
       <div className="">

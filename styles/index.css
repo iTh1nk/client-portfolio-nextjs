@@ -29,6 +29,27 @@
   }
 }
 
+.we-form-error {
+  color: red;
+  font-size: small;
+}
+
+.we-btn-blue {
+  @apply bg-blue-600 text-white text-sm font-semibold py-2 px-3 rounded-md outline-none
+}
+
+.we-btn-gray {
+  @apply bg-gray-600 text-white text-sm font-semibold py-2 px-3 rounded-md outline-none
+}
+
+.we-btn-blue:hover {
+  @apply bg-blue-500 text-gray-900 duration-300 font-semibold
+}
+
+.we-btn-gray:hover {
+  @apply bg-gray-500 text-gray-900 duration-300 font-semibold
+}
+
 .pagination {
   margin: 15px auto;
   display: flex;
