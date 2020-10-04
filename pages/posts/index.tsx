@@ -57,7 +57,7 @@ const Posts: React.FunctionComponent<Props> = ({ dataProps, dataProject }) => {
               <Link href={`/posts/[postId]`} as={`/posts/${item.id}`}>
                 <a className="font-semibold text-2xl">{item.title}</a>
               </Link>
-              <div className="py-2 text-gray-500 text-xs">
+              <div className="py-2 text-gray-500 text-xs ">
                 {format(new Date(item.created_at), "MM-dd-yyyy HH:mm")}
               </div>
               <div className="font-mono text-sm dark:text-gray-400">

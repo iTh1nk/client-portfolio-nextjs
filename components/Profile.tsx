@@ -145,7 +145,9 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
             <SubDiv>
               <FontAwesomeIcon icon={faPaperPlane} />
               <SubTitle>
-                <a href="">Message</a>
+                <Link href="/message/">
+                  <a>Message</a>
+                </Link>
               </SubTitle>
             </SubDiv>
           </SubCategory>

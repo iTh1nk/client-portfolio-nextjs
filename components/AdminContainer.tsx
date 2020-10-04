@@ -64,7 +64,7 @@ const AdminContainer: React.FunctionComponent<Props> = ({
       </div>
       <div className="flex flex-row justify-start">
         <div>
-          <ProSidebar className="h-screen z-0" collapsed={collapse}>
+          <ProSidebar className="h-full min-h-screen z-0" collapsed={collapse}>
             <SidebarHeader>
               <div className="text-center p-2 text-sm">
                 {!collapse ? (
