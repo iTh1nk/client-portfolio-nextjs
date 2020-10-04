@@ -39,7 +39,7 @@ const AdminPostAdd: React.FunctionComponent<Props> = ({}) => {
       author: data.author,
       content: ckContent,
     };
-    Axios.post(process.env.NEXT_PUBLIC_API + "/posts/post/", dataSubmit, {
+    Axios.post(process.env.NEXT_PUBLIC_API + "/projects/post/", dataSubmit, {
       headers: { authorization: localStorage.getItem("auth") },
     })
       .then((resp) => {

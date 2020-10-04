@@ -16,6 +16,7 @@ import Axios from "axios";
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
   author: yup.string().required("Author is required"),
+  content: yup.string().required("Content is required"),
 });
 
 interface Props {}
@@ -23,6 +24,7 @@ interface Props {}
 interface IFormInputs {
   title: string;
   author: string;
+  content: string;
 }
 
 const AdminPostAdd: React.FunctionComponent<Props> = ({}) => {
@@ -39,7 +41,7 @@ const AdminPostAdd: React.FunctionComponent<Props> = ({}) => {
       author: data.author,
       content: ckContent,
     };
-    Axios.post(process.env.NEXT_PUBLIC_API + "/posts/post/", dataSubmit, {
+    Axios.post(process.env.NEXT_PUBLIC_API + "/messages/post/", dataSubmit, {
       headers: { authorization: localStorage.getItem("auth") },
     })
       .then((resp) => {
@@ -89,10 +91,15 @@ const AdminPostAdd: React.FunctionComponent<Props> = ({}) => {
             <label className="block text-sm font-bold mb-2" htmlFor="content">
               Content
             </label>
-            <AdminCKEditor
-              data={ckContent}
-              cb={(cbContent) => setCkContent(cbContent)}
+            <input
+              className="shadow appearance-none border border-red rounded w-full py-2 px-3 mb-1 dark:text-black"
+              id="content"
+              type="content"
+              placeholder="Content"
+              name="content"
+              ref={register}
             />
+            <p className="we-form-error">{errors.content?.message}</p>
           </div>
           <div className="flex items-center justify-start">
             <button className="we-btn-blue" type="submit">

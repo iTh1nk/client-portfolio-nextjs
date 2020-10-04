@@ -5,15 +5,13 @@ import {
   faComment,
   faCopyright,
   faHome,
-  faMinus,
-  faPlus,
+  faEdit,
   faRss,
   faSignOutAlt,
   faTasks,
-  faUserCog,
+  faFile,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import {
@@ -31,9 +29,16 @@ import LoginModal from "./LoginModal";
 import IsError from "./IsError";
 import { useRouter } from "next/router";
 
-interface Props {}
+interface Props {
+  topNotify?: string;
+  topNotifyBool?: boolean;
+}
 
-const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
+const AdminContainer: React.FunctionComponent<Props> = ({
+  children,
+  topNotify,
+  topNotifyBool = undefined,
+}) => {
   const [collapse, setCollapse] = useState<boolean>(true);
   const { isAuthenticated, isLoading, error, userLoggedIn } = useLoggedIn();
   const router = useRouter();
@@ -48,6 +53,15 @@ const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
 
   return (
     <>
+      <div
+        className={
+          (topNotifyBool === undefined ? " hidden " : " ") +
+          (topNotifyBool ? " bg-blue-600 " : " bg-red-600 ") +
+          "  text-center p-2 text-white font-semibold"
+        }
+      >
+        {topNotifyBool ? "Successfully Completed!" : "Error, try again later."}
+      </div>
       <div className="flex flex-row justify-start">
         <div>
           <ProSidebar className="h-screen z-0" collapsed={collapse}>
@@ -87,14 +101,14 @@ const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
                   <MenuItem>
                     <Link href="/admin/post/add">
                       <a>
-                        <FontAwesomeIcon icon={faPlus} />
+                        <FontAwesomeIcon icon={faFile} />
                       </a>
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link href="/admin/post/delete">
+                    <Link href="/admin/post/edit">
                       <a>
-                        <FontAwesomeIcon icon={faMinus} />
+                        <FontAwesomeIcon icon={faEdit} />
                       </a>
                     </Link>
                   </MenuItem>
@@ -111,10 +125,18 @@ const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <FontAwesomeIcon icon={faPlus} />
+                    <Link href="/admin/project/add">
+                      <a>
+                        <FontAwesomeIcon icon={faFile} />
+                      </a>
+                    </Link>
                   </MenuItem>
                   <MenuItem>
-                    <FontAwesomeIcon icon={faMinus} />
+                    <Link href="/admin/project/edit">
+                      <a>
+                        <FontAwesomeIcon icon={faEdit} />
+                      </a>
+                    </Link>
                   </MenuItem>
                 </SubMenu>
                 <SubMenu
@@ -129,10 +151,18 @@ const AdminContainer: React.FunctionComponent<Props> = ({ children }) => {
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <FontAwesomeIcon icon={faPlus} />
+                    <Link href="/admin/message/add">
+                      <a>
+                        <FontAwesomeIcon icon={faFile} />
+                      </a>
+                    </Link>
                   </MenuItem>
                   <MenuItem>
-                    <FontAwesomeIcon icon={faMinus} />
+                    <Link href="/admin/message/edit">
+                      <a>
+                        <FontAwesomeIcon icon={faEdit} />
+                      </a>
+                    </Link>
                   </MenuItem>
                 </SubMenu>
               </Menu>
