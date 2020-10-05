@@ -46,7 +46,14 @@ const Projects: React.FunctionComponent<Props> = ({
         <div className="flex flex-col justify-between md:w-full md:mt-0">
           <PageProject dataProps={dataProps} currentPage={currentPage} />
           <div className="hidden">
-            <PageProject dataProps={dataProps} currentPage={currentPage + 1} />
+            {Math.ceil(
+              dataProps?.total / parseInt(process.env.NEXT_PUBLIC_PAGE)
+            ) > currentPage ? (
+              <PageProject
+                dataProps={dataProps}
+                currentPage={currentPage + 1}
+              />
+            ) : null}
           </div>
           <ReactPaginate
             previousLabel={<FontAwesomeIcon icon={faAngleDoubleLeft} />}

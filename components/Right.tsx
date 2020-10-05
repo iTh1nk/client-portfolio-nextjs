@@ -24,7 +24,7 @@ const Right: React.FunctionComponent<Props> = ({ dataProps, dataIntro }) => {
 
   return (
     <div>
-      <div className="divide-y divide-gray-400">
+      <div className="divide-y divide-gray-500">
         <div className="py-2 mb-3 mb:mb-6">
           <Intro dataIntro={dataIntro} />
         </div>

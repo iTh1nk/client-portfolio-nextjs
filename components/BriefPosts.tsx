@@ -51,7 +51,7 @@ const BriefPosts: React.FunctionComponent<Props> = ({ dataProps }) => {
         </div>
       ))}
       <Link href="/posts">
-        <a className="transform hover:translate-x-1 duration-500">
+        <a className="transform hover:translate-x-1 duration-500 w-24">
           <FontAwesomeIcon icon={faAngleDoubleRight} />
           <span className="ml-2">All Posts</span>
         </a>

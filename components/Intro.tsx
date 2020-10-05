@@ -40,7 +40,7 @@ const Intro: React.FunctionComponent<Props> = ({ dataIntro }) => {
           reach out to me through 'Contact' section. Thanks.
         </p> */}
         <div
-          className="ck-content"
+          className="ck-content cursor-default"
           dangerouslySetInnerHTML={{ __html: dataIntro?.content }}
         />
       </div>
