@@ -10,6 +10,7 @@ import {
   faSignOutAlt,
   faTasks,
   faFile,
+  faIdCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -57,7 +58,7 @@ const AdminContainer: React.FunctionComponent<Props> = ({
         className={
           (topNotifyBool === undefined ? " hidden " : " ") +
           (topNotifyBool ? " bg-blue-600 " : " bg-red-600 ") +
-          "  text-center p-2 text-white font-semibold"
+          "absolute top-0 w-full z-10 text-center p-2 text-white font-semibold"
         }
       >
         {topNotifyBool ? "Successfully Completed!" : "Error, try again later."}
@@ -90,6 +91,11 @@ const AdminContainer: React.FunctionComponent<Props> = ({
                 <MenuItem icon={<FontAwesomeIcon icon={faChartLine} />}>
                   Home
                 </MenuItem>
+                <MenuItem icon={<FontAwesomeIcon icon={faIdCard} />}>
+                  <Link href="/admin/intro">
+                    <a>Intro</a>
+                  </Link>
+                </MenuItem>
                 <SubMenu title="Post" icon={<FontAwesomeIcon icon={faRss} />}>
                   <MenuItem>
                     <Link href="/admin/post">
@@ -101,14 +107,14 @@ const AdminContainer: React.FunctionComponent<Props> = ({
                   <MenuItem>
                     <Link href="/admin/post/add">
                       <a>
-                        <FontAwesomeIcon icon={faFile} />
+                        <FontAwesomeIcon icon={faFile} className="mr-2 w-5" /> New
                       </a>
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link href="/admin/post/edit">
                       <a>
-                        <FontAwesomeIcon icon={faEdit} />
+                        <FontAwesomeIcon icon={faEdit} className="mr-2 w-5" /> Edit
                       </a>
                     </Link>
                   </MenuItem>
@@ -127,14 +133,14 @@ const AdminContainer: React.FunctionComponent<Props> = ({
                   <MenuItem>
                     <Link href="/admin/project/add">
                       <a>
-                        <FontAwesomeIcon icon={faFile} />
+                        <FontAwesomeIcon icon={faFile} className="mr-2 w-5" /> New
                       </a>
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link href="/admin/project/edit">
                       <a>
-                        <FontAwesomeIcon icon={faEdit} />
+                        <FontAwesomeIcon icon={faEdit} className="mr-2 w-5" /> Edit
                       </a>
                     </Link>
                   </MenuItem>
@@ -153,14 +159,14 @@ const AdminContainer: React.FunctionComponent<Props> = ({
                   <MenuItem>
                     <Link href="/admin/message/add">
                       <a>
-                        <FontAwesomeIcon icon={faFile} />
+                        <FontAwesomeIcon icon={faFile} className="mr-2 w-5" /> New
                       </a>
                     </Link>
                   </MenuItem>
                   <MenuItem>
                     <Link href="/admin/message/edit">
                       <a>
-                        <FontAwesomeIcon icon={faEdit} />
+                        <FontAwesomeIcon icon={faEdit} className="mr-2 w-5" /> Edit
                       </a>
                     </Link>
                   </MenuItem>
@@ -194,7 +200,7 @@ const AdminContainer: React.FunctionComponent<Props> = ({
           className={
             (collapse
               ? "duration-700 opacity-100 "
-              : " duration-75 opacity-0 ") + "p-3 md:p-6 w-full"
+              : " duration-75 opacity-0 ") + "p-3 md:p-8 w-full"
           }
         >
           {children}

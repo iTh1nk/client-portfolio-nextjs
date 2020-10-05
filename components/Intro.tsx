@@ -1,9 +1,15 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-interface Props {}
+interface Props {
+  dataIntro: Intro;
+}
+type Intro = {
+  title: string;
+  content: string;
+};
 
-const Intro: React.FunctionComponent<Props> = ({}) => {
+const Intro: React.FunctionComponent<Props> = ({ dataIntro }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [m0Counter, setM0Counter] = useState<number>(0);
   const router = useRouter();
@@ -14,12 +20,13 @@ const Intro: React.FunctionComponent<Props> = ({}) => {
     <div>
       <div
         onClick={() => setM0Counter(m0Counter + 1)}
-        className="font-mono mb-3 font-bold text-3xl text-blue-500"
+        className="font-mono font-bold text-3xl text-blue-500 cursor-default"
       >
         Ciao 👋
+        {/* {dataIntro?.title} */}
       </div>
       <div className="">
-        <p>
+        {/* <p>
           Welcome to my "HOME"! My name is Chao Feng. Here, you will find
           something about me!
         </p>
@@ -31,7 +38,11 @@ const Intro: React.FunctionComponent<Props> = ({}) => {
         <p>
           I am currently looking for a full-time job. If want a talk, please
           reach out to me through 'Contact' section. Thanks.
-        </p>
+        </p> */}
+        <div
+          className="ck-content"
+          dangerouslySetInnerHTML={{ __html: dataIntro?.content }}
+        />
       </div>
     </div>
   );

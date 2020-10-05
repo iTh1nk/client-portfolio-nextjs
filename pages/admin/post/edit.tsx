@@ -59,7 +59,7 @@ const AdminPostEdit: React.FunctionComponent<Props> = ({}) => {
               onClick={() => {
                 handleDelete(item.id);
               }}
-              className="text-red-500 ml-2"
+              className="text-red-500 ml-2 cursor-pointer"
               icon={faTrashAlt}
             />
           </div>

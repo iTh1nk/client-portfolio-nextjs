@@ -3,7 +3,7 @@ import Profile from "../components/Profile";
 import Right from "../components/Right";
 import { Container } from "../components/Container";
 
-export default function IndexPage({ dataPost, dataProject }) {
+export default function IndexPage({ dataPost, dataProject, dataIntro }) {
   return (
     <Container dataProps={dataProject?.slice(0, 3)}>
       <div className="">
@@ -11,7 +11,7 @@ export default function IndexPage({ dataPost, dataProject }) {
           <Profile dataProps={dataProject} />
         </div> */}
         <div className="">
-          <Right dataProps={dataPost?.slice(0, 5)} />
+          <Right dataProps={dataPost?.slice(0, 5)} dataIntro={dataIntro[0]} />
         </div>
       </div>
     </Container>
@@ -26,10 +26,13 @@ export async function getStaticProps() {
       process.env.NEXT_PUBLIC_API + "/projects/get"
     );
     const dataProject = await resProject.json();
+    const resIntro = await fetch(process.env.NEXT_PUBLIC_API + "/intro/get");
+    const dataIntro = await resIntro.json();
     return {
       props: {
         dataPost,
         dataProject,
+        dataIntro,
       },
       revalidate: 1,
     };

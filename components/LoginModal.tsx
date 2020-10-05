@@ -44,7 +44,7 @@ const LoginModal: React.FunctionComponent<Props> = ({}) => {
       .then((resp) => {
         localStorage.setItem("auth", resp.data.token);
         setIsLoading(false);
-        router.push("/admin");
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err, err.response);
