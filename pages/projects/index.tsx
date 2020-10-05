@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Profile from "../../components/Profile";
 import { Container } from "../../components/Container";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +6,7 @@ import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import PageProject from "../../components/PageProject";
 
 interface Props {
   dataProps: { results: Array<Project>; total: number };
@@ -17,6 +16,7 @@ interface Props {
 type Project = {
   id: string;
   title: string;
+  author: string;
   content: string;
   created_at: Date;
 };
@@ -26,44 +26,28 @@ const Projects: React.FunctionComponent<Props> = ({
   dataProject,
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // const handlePageClick = (e) => {
-  //   dispatch({ type: "pageChange", page: e.selected });
-  // };
+  const handlePageClick = (e) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setCurrentPage(e.selected + 1);
+  };
 
   return (
-    <Container title="Projects" content={"All Projects"} dataProps={dataProject?.slice(0, 3)}>
+    <Container
+      title="Projects"
+      content={"All Projects"}
+      dataProps={dataProject?.slice(0, 3)}
+    >
       <div className="">
-        {/* <div className="md:w-1/2">
-          <Profile />
-        </div> */}
         <div className="inline md:hidden">
           <hr className="mt-3 mb-6" />
         </div>
         <div className="flex flex-col justify-between md:w-full md:mt-0">
-          {dataProps?.results?.map((item, idx) => (
-            <div className="mb-6" key={item.id}>
-              <Link href={`/projects/[postId]`} as={`/projects/${item.id}`}>
-                <a className="font-semibold text-2xl">{item.title}</a>
-              </Link>
-              <div className="mt-3 font-mono text-sm dark:text-gray-400">
-                <div
-                  className="ck-content inline-block h-24 overflow-hidden"
-                  dangerouslySetInnerHTML={{
-                    __html: item.content,
-                  }}
-                />
-              </div>
-              <div className="mt-3 font-serif text-gray-500">
-                {item.content.length <
-                parseInt(process.env.CONTENT_LENGTH) ? null : (
-                  <Link href={`/projects/[postId]`} as={`/projects/${item.id}`}>
-                    <a>Read More...</a>
-                  </Link>
-                )}
-              </div>
-            </div>
-          ))}
+          <PageProject dataProps={dataProps} currentPage={currentPage} />
+          <div className="hidden">
+            <PageProject dataProps={dataProps} currentPage={currentPage + 1} />
+          </div>
           <ReactPaginate
             previousLabel={<FontAwesomeIcon icon={faAngleDoubleLeft} />}
             nextLabel={<FontAwesomeIcon icon={faAngleDoubleRight} />}
@@ -90,7 +74,8 @@ export async function getStaticProps() {
     const res = await fetch(
       process.env.NEXT_PUBLIC_API +
         "/projects/get/page?page_size=" +
-        process.env.NEXT_PUBLIC_PAGE
+        process.env.NEXT_PUBLIC_PAGE +
+        "&page=1"
     );
     const dataProps = await res.json();
     const resProject = await fetch(
