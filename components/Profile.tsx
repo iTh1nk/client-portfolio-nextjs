@@ -60,7 +60,7 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
         <div className="text-gray-600 italic text-sm">Full Stack Developer</div>
         <div
           onClick={() => setExpand(!expand)}
-          className="mt-3 cursor-pointer inline-block md:hidden"
+          className="mt-3 cursor-pointer inline-block md:hidden we-animate-bounce"
         >
           {expand ? (
             <span>

@@ -50,6 +50,10 @@
   @apply bg-gray-500 text-gray-900 duration-300 font-semibold
 }
 
+.we-animate-bounce {
+  animation: bounce 2s infinite;
+}
+
 .pagination {
   margin: 15px auto;
   display: flex;
