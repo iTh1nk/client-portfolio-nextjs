@@ -57,6 +57,7 @@ const AdminPostAdd: React.FunctionComponent<Props> = ({}) => {
     <AdminContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="bg-white shadow-md rounded px-3 pt-6 pb-8 mb-4 flex flex-col dark:bg-gray-900">
+          <div className="font-bold mb-5">Add New Post</div>
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2" htmlFor="title">
               Title

@@ -51,23 +51,27 @@ const AdminPostEdit: React.FunctionComponent<Props> = ({}) => {
 
   return (
     <AdminContainer topNotifyBool={topNotify}>
-      {dataPost?.map((item, idx) => (
-        <div className="" key={item.id}>
-          <div className="font-bold mt-3">
-            {idx + 1}: {item.title}{" "}
-            <FontAwesomeIcon
-              onClick={() => {
-                handleDelete(item.id);
-              }}
-              className="text-red-500 ml-2 cursor-pointer"
-              icon={faTrashAlt}
-            />
+      {dataPost.length !== 0 ? (
+        dataPost?.map((item, idx) => (
+          <div className="" key={item.id}>
+            <div className="font-bold mt-3">
+              {idx + 1}: {item.title}{" "}
+              <FontAwesomeIcon
+                onClick={() => {
+                  handleDelete(item.id);
+                }}
+                className="text-red-500 ml-2 cursor-pointer"
+                icon={faTrashAlt}
+              />
+            </div>
+            <div className="ml-5 py-2 text-gray-500 text-xs">
+              {format(new Date(item.created_at), "MM-dd-yyyy HH:mm")}
+            </div>
           </div>
-          <div className="ml-5 py-2 text-gray-500 text-xs">
-            {format(new Date(item.created_at), "MM-dd-yyyy HH:mm")}
-          </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <div>No Data</div>
+      )}
     </AdminContainer>
   );
 };

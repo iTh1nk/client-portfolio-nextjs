@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Profile from "../../components/Profile";
 import { Container } from "../../components/Container";
+import { format } from "date-fns";
 
 interface Props {
   dataProps: Post;
@@ -39,6 +40,9 @@ const Post: React.FunctionComponent<Props> = ({ dataProps, dataProject }) => {
         </div>
         <div className="flex flex-col justify-start md:w-full md:mt-0">
           <div className="font-semibold text-2xl">{dataProps?.title}</div>
+          <div className="py-2 text-gray-500 text-xs ">
+            {format(new Date(dataProps.created_at), "MM-dd-yyyy HH:mm")}
+          </div>
           <div className="mt-6 font-mono text-sm dark:text-gray-400">
             <div
               className="ck-content inline-block"

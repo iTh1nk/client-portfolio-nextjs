@@ -57,7 +57,7 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
         <div className="mt-2 font-semibold text-2xl">
           <Link href="/posts">Chao Feng</Link>
         </div>
-        <div className="text-gray-600 italic text-sm">Full Stack Developer</div>
+        <div className="text-gray-600 italic text-sm cursor-default">Full Stack Developer</div>
         <div
           onClick={() => setExpand(!expand)}
           className="mt-3 cursor-pointer inline-block md:hidden we-animate-bounce"
@@ -98,7 +98,9 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
           </SubCategory>
         </Category>
         <Category>
-          <Title>About</Title>
+          <Title>
+            <span className="cursor-default">About</span>
+          </Title>
           <SubCategory>
             <SubDiv>
               <FontAwesomeIcon icon={faGithub} />
@@ -122,7 +124,9 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
           </SubCategory>
         </Category>
         <Category>
-          <Title>Contact</Title>
+          <Title>
+            <span className="cursor-default">Contact</span>
+          </Title>
           <SubCategory>
             <SubDiv>
               <FontAwesomeIcon icon={faTwitter} />
