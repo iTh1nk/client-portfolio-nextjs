@@ -40,9 +40,9 @@ const Post: React.FunctionComponent<Props> = ({ dataProps, dataProject }) => {
         </div>
         <div className="flex flex-col justify-start md:w-full md:mt-0">
           <div className="font-semibold text-2xl">{dataProps?.title}</div>
-          <div className="py-2 text-gray-500 text-xs ">
+          {/* <div className="py-2 text-gray-500 text-xs ">
             {format(new Date(dataProps?.created_at), "MM-dd-yyyy HH:mm")}
-          </div>
+          </div> */}
           <div className="font-mono text-sm dark:text-gray-400">
             <div
               className="ck-content inline-block"
@@ -71,7 +71,6 @@ export async function getStaticProps(context) {
   const dataProps = await res.json();
   const resProject = await fetch(process.env.NEXT_PUBLIC_API + "/projects/get");
   const dataProject = await resProject.json();
-  console.log(dataProps)
   return { props: { dataProps, dataProject }, revalidate: 1 };
 }
 
