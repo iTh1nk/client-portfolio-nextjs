@@ -78,7 +78,7 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
         <Category>
           <Link href="/projects">
             <Title>
-              <span className="cursor-pointer">Projects</span>
+              <span className="cursor-pointer">Project</span>
             </Title>
           </Link>
           <SubCategory>
