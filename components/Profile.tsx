@@ -44,6 +44,19 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [expand, setExpand] = useState<boolean>(false);
 
+  const handleAvatar = () => {
+    switch (format(new Date(), "MM-dd")) {
+      case "10-31":
+        return "/halloween-avatar.png";
+      case "12-25":
+        return "/christmas-avatar.png";
+      case "01-01":
+        return "/newyear-avatar.png";
+      default:
+        return "/profile.png";
+    }
+  };
+
   return (
     <>
       {/* Profile Picture and Title */}
@@ -51,11 +64,7 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
         <Link href="/">
           <img
             className="w-24 h-24 md:w-40 md:h-40 rounded-we shadow-we m-auto md:m-0 cursor-pointer"
-            src={
-              format(new Date(), "MM-dd") === "10-31"
-                ? "/halloween-avatar.png"
-                : "/profile.png"
-            }
+            src={handleAvatar()}
             alt="Profile Image"
           />
         </Link>
