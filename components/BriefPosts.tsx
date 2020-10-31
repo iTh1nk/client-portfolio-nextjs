@@ -32,13 +32,21 @@ const BriefPosts: React.FunctionComponent<Props> = ({ dataProps }) => {
           <div className="py-2 text-gray-500 text-xs">
             {format(new Date(item.created_at), "MM-dd-yyyy HH:mm")}
           </div>
-          <div className="font-mono text-sm dark:text-gray-400">
+          <div className="relative font-mono text-sm dark:text-gray-400">
             <div
-              className="ck-content inline-block h-24 overflow-hidden"
+              className="ck-content inline-block h-32 overflow-hidden"
               dangerouslySetInnerHTML={{
                 __html: item.content,
               }}
             />
+            {/* {item.content.length <
+            parseInt(process.env.NEXT_PUBLIC_CONTENT_LENGTH) ? null : (
+              <div className="absolute bottom-0 w-full text-center bg-gray-900 shadow-3xl rounded-sm p-1">
+                <Link href={`/posts/[postId]`} as={`/posts/${item.id}`}>
+                  <a>Read More...</a>
+                </Link>
+              </div>
+            )} */}
           </div>
           <div className="mt-3 font-serif text-gray-500">
             {item.content.length <

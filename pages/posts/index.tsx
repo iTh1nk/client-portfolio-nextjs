@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Profile from "../../components/Profile";
 import { Container } from "../../components/Container";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,8 +6,6 @@ import {
   faAngleDoubleLeft,
   faAngleDoubleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-import useSWR from "swr";
 import PagePost from "../../components/PagePost";
 
 interface Props {
