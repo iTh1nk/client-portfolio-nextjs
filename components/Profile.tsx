@@ -19,6 +19,7 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
+import { format } from "date-fns";
 
 const Category = styled.div(() => [tw`mt-3 text-center md:text-left`]);
 const SubCategory = styled.div(() => [tw`md:ml-3 m-auto`]);
@@ -50,14 +51,20 @@ const Profile: React.FunctionComponent<Props> = ({ dataProps }) => {
         <Link href="/">
           <img
             className="w-24 h-24 md:w-40 md:h-40 rounded-we shadow-we m-auto md:m-0 cursor-pointer"
-            src="/profile.png"
+            src={
+              format(new Date(), "MM-dd") === "10-31"
+                ? "/halloween-avatar.png"
+                : "/profile.png"
+            }
             alt="Profile Image"
           />
         </Link>
         <div className="mt-2 font-semibold text-2xl">
           <Link href="/posts">Chao Feng</Link>
         </div>
-        <div className="text-gray-600 italic text-sm cursor-default">Full Stack Developer</div>
+        <div className="text-gray-600 italic text-sm cursor-default">
+          Full Stack Developer
+        </div>
         <div
           onClick={() => setExpand(!expand)}
           className="mt-3 cursor-pointer inline-block md:hidden we-animate-bounce"
